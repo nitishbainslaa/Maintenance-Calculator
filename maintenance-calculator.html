@@ -1,1 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maintenance Calculator - AK Tiwari</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background: linear-gradient(135deg,#0f172a,#1e293b);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px 15px;
+      color:white;
+    }
+
+    .container{
+      width:100%;
+      max-width:900px;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(15px);
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:25px;
+      overflow:hidden;
+      box-shadow:0 15px 50px rgba(0,0,0,0.4);
+    }
+
+    .top{
+      padding:40px;
+      text-align:center;
+      background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    }
+
+    .top h1{
+      font-size:38px;
+      margin-bottom:10px;
+      font-weight:700;
+    }
+
+    .top p{
+      opacity:0.9;
+      font-size:15px;
+    }
+
+    .main{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+    }
+
+    .left{
+      padding:35px;
+      background:#ffffff;
+      color:#111827;
+    }
+
+    .right{
+      padding:35px;
+      background:#111827;
+      position:relative;
+    }
+
+    .input-group{
+      margin-bottom:22px;
+    }
+
+    label{
+      display:block;
+      margin-bottom:8px;
+      font-weight:600;
+      font-size:14px;
+    }
+
+    input,
+    select{
+      width:100%;
+      padding:14px;
+      border-radius:12px;
+      border:2px solid #e5e7eb;
+      font-size:15px;
+      outline:none;
+      transition:0.3s;
+    }
+
+    input:focus,
+    select:focus{
+      border-color:#2563eb;
+    }
+
+    button{
+      width:100%;
+      padding:16px;
+      border:none;
+      border-radius:14px;
+      background:linear-gradient(135deg,#2563eb,#1d4ed8);
+      color:white;
+      font-size:16px;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    button:hover{
+      transform:translateY(-2px);
+      box-shadow:0 10px 20px rgba(37,99,235,0.3);
+    }
+
+    .result-card{
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:20px;
+      padding:30px;
+    }
+
+    .badge{
+      display:inline-block;
+      background:#10b981;
+      color:white;
+      padding:8px 14px;
+      border-radius:30px;
+      font-size:13px;
+      margin-bottom:18px;
+    }
+
+    .amount{
+      font-size:42px;
+      font-weight:700;
+      margin-bottom:15px;
+      line-height:1.2;
+    }
+
+    .factors{
+      margin-top:25px;
+    }
+
+    .factor{
+      padding:12px;
+      background:rgba(255,255,255,0.05);
+      border-radius:12px;
+      margin-bottom:12px;
+      font-size:14px;
+    }
+
+    .disclaimer{
+      margin-top:25px;
+      font-size:12px;
+      opacity:0.7;
+      line-height:1.7;
+    }
+
+    .whatsapp-btn{
+      display:block;
+      text-align:center;
+      margin-top:25px;
+      text-decoration:none;
+      background:#25D366;
+      padding:15px;
+      border-radius:14px;
+      color:white;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .whatsapp-btn:hover{
+      transform:translateY(-2px);
+    }
+
+    @media(max-width:768px){
+
+      .main{
+        grid-template-columns:1fr;
+      }
+
+      .top h1{
+        font-size:30px;
+      }
+
+      .amount{
+        font-size:34px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="top">
+    <h1>Maintenance Calculator</h1>
+    <p>Estimate Monthly Maintenance Based on Indian Family Law Factors</p>
+  </div>
+
+  <div class="main">
+
+    <div class="left">
+
+      <div class="input-group">
+        <label>Husband Monthly Income</label>
+        <input type="number" id="husbandIncome" placeholder="₹ Enter income">
+      </div>
+
+      <div class="input-group">
+        <label>Wife Monthly Income</label>
+        <input type="number" id="wifeIncome" placeholder="₹ Enter income">
+      </div>
+
+      <div class="input-group">
+        <label>Number of Children</label>
+        <select id="children">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3+</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label>Marriage Duration</label>
+        <select id="duration">
+          <option value="1">Less than 3 Years</option>
+          <option value="2">3 - 7 Years</option>
+          <option value="3">7 - 15 Years</option>
+          <option value="4">15+ Years</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label>Lifestyle Level</label>
+        <select id="lifestyle">
+          <option value="1">Basic</option>
+          <option value="1.2">Middle Class</option>
+          <option value="1.5">Luxury</option>
+        </select>
+      </div>
+
+      <button onclick="calculateMaintenance()">
+        Calculate Maintenance
+      </button>
+
+    </div>
+
+    <div class="right">
+
+      <div class="result-card">
+
+        <div class="badge">
+          AI Estimated Range
+        </div>
+
+        <div class="amount" id="amount">
+          ₹0 - ₹0
+        </div>
+
+        <p id="summary">
+          Fill the details and calculate estimated maintenance amount.
+        </p>
+
+        <div class="factors">
+
+          <div class="factor" id="factor1">
+            • Income disparity affects maintenance.
+          </div>
+
+          <div class="factor" id="factor2">
+            • Child custody may increase amount.
+          </div>
+
+          <div class="factor" id="factor3">
+            • Marriage duration impacts court consideration.
+          </div>
+
+        </div>
+
+        <a
+          class="whatsapp-btn"
+          href="https://wa.me/919999999999"
+          target="_blank"
+        >
+          Talk to Advocate AK Tiwari
+        </a>
+
+        <div class="disclaimer">
+          This calculator provides indicative estimates only and does not constitute legal advice.
+          Actual maintenance depends upon judicial discretion, evidence, financial circumstances,
+          liabilities, lifestyle, and applicable laws.
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+function calculateMaintenance(){
+
+  let husbandIncome =
+  parseFloat(document.getElementById('husbandIncome').value) || 0;
+
+  let wifeIncome =
+  parseFloat(document.getElementById('wifeIncome').value) || 0;
+
+  let children =
+  parseInt(document.getElementById('children').value);
+
+  let duration =
+  parseInt(document.getElementById('duration').value);
+
+  let lifestyle =
+  parseFloat(document.getElementById('lifestyle').value);
+
+  if(husbandIncome <= 0){
+
+    alert("Please enter husband income");
+
+    return;
+  }
+
+  let maintenance = husbandIncome * 0.25;
+
+  if(wifeIncome > 0){
+
+    maintenance -= wifeIncome * 0.30;
+  }
+
+  maintenance += children * 7000;
+
+  if(duration == 2){
+
+    maintenance *= 1.1;
+  }
+
+  if(duration == 3){
+
+    maintenance *= 1.2;
+  }
+
+  if(duration == 4){
+
+    maintenance *= 1.35;
+  }
+
+  maintenance *= lifestyle;
+
+  if(maintenance < 0){
+
+    maintenance = 0;
+  }
+
+  let low =
+  Math.round(maintenance * 0.85);
+
+  let high =
+  Math.round(maintenance * 1.15);
+
+  document.getElementById('amount').innerHTML =
+  `₹${low.toLocaleString()} - ₹${high.toLocaleString()}`;
+
+  document.getElementById('summary').innerHTML =
+  "Based on the provided financial and marital details, this is the estimated maintenance range.";
+
+  document.getElementById('factor1').innerHTML =
+  `• Husband income considered: ₹${husbandIncome.toLocaleString()}`;
+
+  document.getElementById('factor2').innerHTML =
+  `• ${children} child/children included in calculation.`;
+
+  document.getElementById('factor3').innerHTML =
+  `• Lifestyle and marriage duration adjusted estimation.`;
+
+}
+
+</script>
+
+</body>
+</html>

@@ -3,10 +3,10 @@
 
 <head>
 
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>AI Maintenance Calculator | Advocate</title>
+  <title>AI Maintenance Calculator | AK Tiwari</title>
 
   <meta
     name="description"
@@ -66,6 +66,13 @@
 
       box-shadow:
       0 30px 80px rgba(0,0,0,0.45);
+
+      transition:0.4s;
+    }
+
+    .container:hover{
+
+      transform:translateY(-5px);
     }
 
     .container::before{
@@ -329,6 +336,21 @@
       -webkit-background-clip:text;
 
       -webkit-text-fill-color:transparent;
+
+      animation:pop 0.5s ease;
+    }
+
+    @keyframes pop{
+
+      0%{
+        transform:scale(0.8);
+        opacity:0;
+      }
+
+      100%{
+        transform:scale(1);
+        opacity:1;
+      }
     }
 
     .summary{
@@ -359,6 +381,17 @@
       line-height:1.7;
     }
 
+    .trust{
+
+      margin-top:25px;
+
+      line-height:2;
+
+      font-size:13px;
+
+      opacity:0.85;
+    }
+
     .whatsapp-btn{
 
       display:block;
@@ -381,6 +414,14 @@
       font-weight:700;
 
       transition:0.4s;
+    }
+
+    .whatsapp-btn:hover{
+
+      transform:translateY(-4px);
+
+      box-shadow:
+      0 20px 40px rgba(37,211,102,0.28);
     }
 
     .disclaimer{
@@ -450,7 +491,7 @@
     <p>
 
       Estimate maintenance amount under Indian Family Law based on income,
-      marriage duration, children, lifestyle, and dependency factors.
+      marriage duration, children, lifestyle, and financial dependency factors.
 
     </p>
 
@@ -458,26 +499,7 @@
 
   <div class="main">
 
-    <!-- FORM START -->
-
-    <form
-      class="left"
-      action="https://formsubmit.co/nitishbainsla77@gmail.com"
-      method="POST"
-      onsubmit="return calculateMaintenance()"
-    >
-
-      <input
-        type="hidden"
-        name="_captcha"
-        value="false"
-      >
-
-      <input
-        type="hidden"
-        name="_subject"
-        value="New Maintenance Calculator Lead"
-      >
+    <div class="left">
 
       <div class="section-title">
         Client Information
@@ -491,10 +513,8 @@
 
           <input
             type="text"
-            name="Full Name"
             id="name"
             placeholder="Enter Full Name"
-            required
           >
 
         </div>
@@ -505,10 +525,8 @@
 
           <input
             type="tel"
-            name="Phone Number"
             id="phone"
             placeholder="Enter Phone Number"
-            required
           >
 
         </div>
@@ -525,10 +543,8 @@
 
         <input
           type="number"
-          name="Husband Income"
           id="husbandIncome"
           placeholder="₹ Enter Monthly Income"
-          required
         >
 
       </div>
@@ -539,7 +555,6 @@
 
         <input
           type="number"
-          name="Wife Income"
           id="wifeIncome"
           placeholder="₹ Enter Monthly Income"
         >
@@ -552,10 +567,7 @@
 
           <label>Number of Children</label>
 
-          <select
-            name="Children"
-            id="children"
-          >
+          <select id="children">
 
             <option value="0">0</option>
             <option value="1">1</option>
@@ -570,10 +582,7 @@
 
           <label>Marriage Duration</label>
 
-          <select
-            name="Marriage Duration"
-            id="duration"
-          >
+          <select id="duration">
 
             <option value="1">Less than 3 Years</option>
             <option value="2">3 - 7 Years</option>
@@ -590,10 +599,7 @@
 
         <label>Lifestyle Standard</label>
 
-        <select
-          name="Lifestyle"
-          id="lifestyle"
-        >
+        <select id="lifestyle">
 
           <option value="1">Basic</option>
           <option value="1.2">Middle Class</option>
@@ -603,13 +609,11 @@
 
       </div>
 
-      <button type="submit">
+      <button onclick="calculateMaintenance()">
         Calculate Maintenance
       </button>
 
-    </form>
-
-    <!-- FORM END -->
+    </div>
 
     <div class="right">
 
@@ -625,7 +629,8 @@
 
         <div class="summary" id="summary">
 
-          Fill the details to calculate estimated maintenance amount.
+          Fill the details to calculate estimated maintenance amount
+          based on practical family law factors.
 
         </div>
 
@@ -641,20 +646,34 @@
           • Marriage duration and lifestyle impact estimation.
         </div>
 
+        <div class="trust">
+
+          ✔ Practical Family Law Logic Included
+          <br>
+
+          ✔ AI-Based Indicative Estimation
+          <br>
+
+          ✔ Premium Legal Assessment Experience
+
+        </div>
+
         <a
           class="whatsapp-btn"
           href="https://wa.me/919999999999"
           target="_blank"
         >
 
-          Talk to Advocate
+          Talk to Advocate AK Tiwari
 
         </a>
 
         <div class="disclaimer">
 
           This calculator provides indicative estimates only and
-          does not constitute legal advice.
+          does not constitute legal advice. Actual maintenance
+          depends upon judicial discretion, financial records,
+          liabilities, evidence, and applicable laws.
 
         </div>
 
@@ -673,6 +692,9 @@ function calculateMaintenance(){
   let name =
   document.getElementById('name').value;
 
+  let phone =
+  document.getElementById('phone').value;
+
   let husbandIncome =
   parseFloat(document.getElementById('husbandIncome').value) || 0;
 
@@ -687,6 +709,27 @@ function calculateMaintenance(){
 
   let lifestyle =
   parseFloat(document.getElementById('lifestyle').value);
+
+  if(name == ''){
+
+    alert("Please enter full name.");
+
+    return;
+  }
+
+  if(phone == ''){
+
+    alert("Please enter phone number.");
+
+    return;
+  }
+
+  if(husbandIncome <= 0){
+
+    alert("Please enter husband income.");
+
+    return;
+  }
 
   let maintenance =
   husbandIncome * 0.25;
@@ -733,7 +776,8 @@ function calculateMaintenance(){
 
   `Hello ${name},
   based on the entered financial and marital details,
-  this is the estimated maintenance range.`;
+  this is the estimated maintenance range under
+  practical family law considerations.`;
 
   document.getElementById('factor1').innerHTML =
 
@@ -747,8 +791,6 @@ function calculateMaintenance(){
   document.getElementById('factor3').innerHTML =
 
   `• Lifestyle and marriage duration adjusted estimation.`;
-
-  return true;
 }
 
 </script>

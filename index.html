@@ -812,11 +812,43 @@ function calculateMaintenance(){
   let children =
   parseInt(document.getElementById('children').value);
 
-  let duration =
+  let durationValue =
   parseInt(document.getElementById('duration').value);
 
-  let lifestyle =
+  let lifestyleValue =
   parseFloat(document.getElementById('lifestyle').value);
+
+  let durationText = "";
+
+  if(durationValue == 1){
+    durationText = "Less than 3 Years";
+  }
+
+  if(durationValue == 2){
+    durationText = "3 - 7 Years";
+  }
+
+  if(durationValue == 3){
+    durationText = "7 - 15 Years";
+  }
+
+  if(durationValue == 4){
+    durationText = "15+ Years";
+  }
+
+  let lifestyleText = "";
+
+  if(lifestyleValue == 1){
+    lifestyleText = "Basic";
+  }
+
+  if(lifestyleValue == 2){
+    lifestyleText = "Middle Class";
+  }
+
+  if(lifestyleValue == 3){
+    lifestyleText = "Luxury Lifestyle";
+  }
 
   if(name == ''){
 
@@ -838,15 +870,17 @@ function calculateMaintenance(){
 
     return;
   }
-let captcha =
-grecaptcha.getResponse();
 
-if(captcha.length == 0){
+  let captcha =
+  grecaptcha.getResponse();
 
-  alert("Please verify captcha.");
+  if(captcha.length == 0){
 
-  return;
-}
+    alert("Please verify captcha.");
+
+    return;
+  }
+
   let maintenance =
   husbandIncome * 0.25;
 
@@ -857,22 +891,22 @@ if(captcha.length == 0){
 
   maintenance += children * 7000;
 
-  if(duration == 2){
+  if(durationValue == 2){
 
     maintenance *= 1.1;
   }
 
-  if(duration == 3){
+  if(durationValue == 3){
 
     maintenance *= 1.2;
   }
 
-  if(duration == 4){
+  if(durationValue == 4){
 
     maintenance *= 1.35;
   }
 
-  maintenance *= lifestyle;
+  maintenance *= lifestyleValue;
 
   if(maintenance < 0){
 
@@ -907,47 +941,51 @@ if(captcha.length == 0){
   document.getElementById('factor3').innerHTML =
 
   `• Lifestyle and marriage duration adjusted estimation.`;
+
   fetch("https://script.google.com/macros/s/AKfycbw9w6lgMCWWF8QB5biPtHLBkDNJcFae16wgrZBUR4AUdUxpL42FTZVn2mrklJgDOcW2/exec", {
-  method: "POST",
 
-  body: JSON.stringify({
+    method: "POST",
 
-    name: name,
+    body: JSON.stringify({
 
-    phone: phone,
+      name: name,
 
-    husbandIncome: husbandIncome,
+      phone: phone,
 
-    wifeIncome: wifeIncome,
+      husbandIncome: husbandIncome,
 
-    children: children,
+      wifeIncome: wifeIncome,
 
-    duration: duration,
+      children: children,
 
-    lifestyle: lifestyle,
+      duration: durationText,
 
-    range:
-    `₹${low.toLocaleString()} - ₹${high.toLocaleString()}`
+      lifestyle: lifestyleText,
+
+      range:
+      `₹${low.toLocaleString()} - ₹${high.toLocaleString()}`
+
+    })
 
   })
 
-})
-.then(response => response.json())
+  .then(response => response.json())
 
-.then(data => {
+  .then(data => {
 
-  console.log("Lead Sent Successfully");
+    console.log("Lead Sent Successfully");
 
-})
+    grecaptcha.reset();
 
-.catch(error => {
+  })
 
-  console.log("Error:", error);
+  .catch(error => {
 
-});
-} 
-  
+    console.log("Error:", error);
 
+  });
+
+}
 
 </script>
 </body>

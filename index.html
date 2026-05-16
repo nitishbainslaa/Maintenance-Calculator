@@ -791,7 +791,48 @@ function calculateMaintenance(){
   document.getElementById('factor3').innerHTML =
 
   `• Lifestyle and marriage duration adjusted estimation.`;
-}
+  fetch("YOUR_GOOGLE_SCRIPT_WEBAPP_URL", {
+
+  method: "POST",
+
+  body: JSON.stringify({
+
+    name: name,
+
+    phone: phone,
+
+    husbandIncome: husbandIncome,
+
+    wifeIncome: wifeIncome,
+
+    children: children,
+
+    duration: duration,
+
+    lifestyle: lifestyle,
+
+    range:
+    `₹${low.toLocaleString()} - ₹${high.toLocaleString()}`
+
+  })
+
+})
+.then(response => response.json())
+
+.then(data => {
+
+  console.log("Lead Sent Successfully");
+
+})
+
+.catch(error => {
+
+  console.log("Error:", error);
+
+});
+} 
+  
+
 
 </script>
 

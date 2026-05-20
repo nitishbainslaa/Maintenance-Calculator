@@ -1,851 +1,1112 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
 
-<title>
-Maintenance Calculator India 2026
-</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<meta
-name="description"
-content="Calculate maintenance under Indian law">
+  <title>Maintenance Calculator India 2026 | Alimony & Wife Maintenance Calculator</title>
 
-<link
-href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-rel="stylesheet">
+  <meta name="description" content="Free AI Maintenance Calculator India. Calculate wife maintenance, child support, alimony and divorce maintenance under Indian law instantly." />
 
-<style>
+  <meta name="keywords" content="maintenance calculator india, alimony calculator, wife maintenance calculator, child support calculator india, divorce maintenance india" />
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Poppins,sans-serif;
-}
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
-body{
+  <style>
 
-background:
-linear-gradient(
-135deg,
-#020617,
-#111827
-);
+    *{
 
-color:white;
+      margin:0;
 
-padding:40px 20px;
+      padding:0;
 
-}
+      box-sizing:border-box;
 
+      font-family:'Poppins',sans-serif;
 
-.container{
+    }
 
-max-width:1200px;
-margin:auto;
+    body{
 
-background:
-rgba(
-255,
-255,
-255,
-0.04
-);
+      min-height:100vh;
 
-padding:40px;
+      background:
 
-border-radius:30px;
+      radial-gradient(circle at top left,#2563eb,transparent 25%),
 
-backdrop-filter:
-blur(
-20px
-);
+      radial-gradient(circle at bottom right,#7c3aed,transparent 25%),
 
-}
+      #020617;
 
+      overflow-x:hidden;
 
-.top{
+      display:flex;
 
-text-align:center;
-margin-bottom:50px;
+      align-items:center;
 
-}
+      justify-content:center;
 
+      padding:40px 15px;
 
-.top img{
+      color:white;
 
-width:100%;
-border-radius:20px;
-margin-bottom:30px;
+    }
 
-}
+    .seo-content{
 
+      margin-top:40px;
 
-.top h1{
+      padding:35px;
 
-font-size:50px;
+      background:rgba(255,255,255,0.05);
 
-}
+      border:1px solid rgba(255,255,255,0.08);
 
+      border-radius:25px;
 
-.top p{
+      backdrop-filter:blur(12px);
 
-opacity:.8;
-margin-top:20px;
+      max-width:1100px;
 
-}
+      margin-left:auto;
 
+      margin-right:auto;
 
+      color:#e5e7eb;
 
-.main{
+    }
 
-display:grid;
+    .seo-content h2{
 
-grid-template-columns:
-1fr 1fr;
+      font-size:28px;
 
-gap:40px;
+      margin-bottom:15px;
 
-}
+      font-weight:700;
 
+      color:#ffffff;
 
+      line-height:1.4;
 
-.card{
+    }
 
-background:white;
+    .seo-content p{
 
-padding:35px;
+      font-size:15px;
 
-border-radius:25px;
+      line-height:1.9;
 
-color:black;
+      color:rgba(255,255,255,0.75);
 
-}
+      margin-bottom:28px;
 
+    }
 
+    @media(max-width:768px){
 
-.card h2{
+      .seo-content{
 
-margin-bottom:30px;
+        padding:25px;
 
-}
+      }
 
+      .seo-content h2{
 
-input,
-select,
-textarea{
+        font-size:22px;
 
-width:100%;
+      }
 
-padding:16px;
+      .seo-content p{
 
-margin-bottom:20px;
+        font-size:14px;
 
-border:
+        line-height:1.8;
 
-1px solid
-#ddd;
+      }
 
-border-radius:12px;
+    }
 
-font-size:15px;
+    .container{
 
-outline:none;
+      width:100%;
 
-}
+      max-width:1200px;
 
+      background:rgba(255,255,255,0.06);
 
+      backdrop-filter:blur(20px);
 
-button{
+      border:1px solid rgba(255,255,255,0.08);
 
-width:100%;
+      border-radius:35px;
 
-padding:18px;
+      overflow:hidden;
 
-background:
+      position:relative;
 
-linear-gradient(
-135deg,
-#2563eb,
-#7c3aed
-);
+      box-shadow:
 
-border:none;
+      0 30px 80px rgba(0,0,0,0.45);
 
-color:white;
+      transition:0.4s;
 
-font-size:18px;
+    }
 
-border-radius:15px;
+    .container:hover{
 
-cursor:pointer;
+      transform:translateY(-5px);
 
-font-weight:700;
+    }
 
-}
+    .container::before{
 
+      content:'';
 
+      position:absolute;
 
-.result{
+      width:450px;
 
-padding:30px;
+      height:450px;
 
-background:
+      background:#2563eb;
 
-rgba(
-255,
-255,
-255,
-0.05
-);
+      filter:blur(180px);
 
-border-radius:25px;
+      opacity:0.15;
 
-}
+      top:-180px;
 
+      right:-120px;
 
+    }
 
-.amount{
+    .top{
 
-font-size:50px;
+      padding:60px 40px;
 
-font-weight:700;
+      text-align:center;
 
-margin-bottom:20px;
+      border-bottom:
 
-}
+      1px solid rgba(255,255,255,0.08);
 
+      background:
 
+      linear-gradient(
 
-.factor{
+      135deg,
 
-padding:15px;
+      rgba(37,99,235,0.25),
 
-margin-top:15px;
+      rgba(124,58,237,0.15)
 
-background:
+      );
 
-rgba(
-255,
-255,
-255,
-0.05
-);
+    }
 
-border-radius:15px;
+    .badge{
 
-}
+      display:inline-block;
 
+      padding:10px 20px;
 
+      border-radius:20px;
 
-.whatsapp{
+      background:white;
 
-display:block;
+      border:1px solid rgba(255,255,255,0.08);
 
-margin-top:30px;
+      font-size:13px;
 
-padding:18px;
+      letter-spacing:1px;
 
-background:#25D366;
+      margin-bottom:25px;
 
-text-align:center;
+    }
 
-border-radius:15px;
+    .top h1{
 
-text-decoration:none;
+      font-size:55px;
 
-color:white;
+      line-height:1.1;
 
-font-weight:700;
+      margin-bottom:20px;
 
-}
+      font-weight:800;
 
+    }
 
+    .gradient{
 
-.seo{
+      background:
 
-margin-top:60px;
+      linear-gradient(135deg,#60a5fa,#c084fc);
 
-background:
+      -webkit-background-clip:text;
 
-rgba(
-255,
-255,
-255,
-0.05
-);
+      -webkit-text-fill-color:transparent;
 
-padding:30px;
+    }
 
-border-radius:25px;
+    .top p{
 
-}
+      max-width:750px;
 
+      margin:auto;
 
-.seo h2{
+      opacity:0.82;
 
-margin-bottom:20px;
+      line-height:1.9;
 
-margin-top:20px;
+      font-size:15px;
 
-}
+    }
 
+    .main{
 
+      display:grid;
 
-.seo p{
+      grid-template-columns:1fr 1fr;
 
-line-height:1.8;
-opacity:.85;
+    }
 
-}
+    .left{
 
+      padding:45px;
 
+      background:rgba(255,255,255,0.97);
 
-@media(max-width:900px){
+      color:#111827;
 
-.main{
+    }
 
-grid-template-columns:
-1fr;
+    .right{
 
-}
+      padding:45px;
 
+      background:
 
-.top h1{
+      linear-gradient(
 
-font-size:35px;
+      180deg,
 
-}
+      rgba(2,6,23,0.75),
 
-}
+      rgba(15,23,42,0.95)
 
+      );
 
+    }
 
-</style>
+    .section-title{
 
+      font-size:26px;
+
+      font-weight:700;
+
+      margin-bottom:30px;
+
+    }
+
+    .input-group{
+
+      margin-bottom:22px;
+
+    }
+
+    label{
+
+      display:block;
+
+      margin-bottom:10px;
+
+      font-size:14px;
+
+      font-weight:600;
+
+    }
+
+    input,
+
+    select,
+
+    textarea{
+
+      width:100%;
+
+      padding:17px;
+
+      border-radius:18px;
+
+      border:1px solid rgba(0,0,0,0.08);
+
+      background:#f8fafc;
+
+      outline:none;
+
+      font-size:15px;
+
+      transition:0.3s;
+
+    }
+
+    input:focus,
+
+    select:focus,
+
+    textarea:focus{
+
+      border-color:#2563eb;
+
+      box-shadow:
+
+      0 0 0 5px rgba(37,99,235,0.12);
+
+    }
+
+    .row{
+
+      display:grid;
+
+      grid-template-columns:1fr 1fr;
+
+      gap:18px;
+
+    }
+
+    button{
+
+      width:100%;
+
+      padding:20px;
+
+      border:none;
+
+      border-radius:20px;
+
+      background:
+
+      linear-gradient(135deg,#2563eb,#7c3aed);
+
+      color:white;
+
+      font-size:17px;
+
+      font-weight:700;
+
+      cursor:pointer;
+
+      margin-top:10px;
+
+      transition:0.4s;
+
+    }
+
+    button:hover{
+
+      transform:translateY(-5px);
+
+      box-shadow:
+
+      0 25px 50px rgba(37,99,235,0.35);
+
+    }
+
+    .result-card{
+
+      background:rgba(255,255,255,0.05);
+
+      border:1px solid rgba(255,255,255,0.08);
+
+      border-radius:30px;
+
+      padding:35px;
+
+      backdrop-filter:blur(20px);
+
+    }
+
+    .result-badge{
+
+      display:inline-block;
+
+      padding:8px 18px;
+
+      border-radius:50px;
+
+      background:
+
+      linear-gradient(135deg,#10b981,#059669);
+
+      font-size:13px;
+
+      font-weight:600;
+
+      margin-bottom:25px;
+
+    }
+
+    .amount{
+
+      font-size:55px;
+
+      font-weight:800;
+
+      line-height:1.1;
+
+      margin-bottom:20px;
+
+      background:
+
+      linear-gradient(135deg,#ffffff,#60a5fa);
+
+      -webkit-background-clip:text;
+
+      -webkit-text-fill-color:transparent;
+
+      animation:pop 0.5s ease;
+
+    }
+
+    @keyframes pop{
+
+      0%{
+
+        transform:scale(0.8);
+
+        opacity:0;
+
+      }
+
+      100%{
+
+        transform:scale(1);
+
+        opacity:1;
+
+      }
+
+    }
+
+    .summary{
+
+      line-height:1.9;
+
+      opacity:0.88;
+
+      font-size:15px;
+
+      margin-bottom:25px;
+
+    }
+
+    .g-recaptcha{
+
+      margin-top:20px;
+
+      margin-bottom:10px;
+
+    }
+
+    .factor{
+
+      background:rgba(255,255,255,0.05);
+
+      border:1px solid rgba(255,255,255,0.06);
+
+      padding:16px;
+
+      border-radius:18px;
+
+      margin-bottom:15px;
+
+      font-size:14px;
+
+      line-height:1.7;
+
+    }
+
+    .trust{
+
+      margin-top:25px;
+
+      line-height:2;
+
+      font-size:13px;
+
+      opacity:0.85;
+
+    }
+
+    .whatsapp-btn{
+
+      display:block;
+
+      text-align:center;
+
+      text-decoration:none;
+
+      padding:18px;
+
+      border-radius:18px;
+
+      margin-top:30px;
+
+      background:
+
+      linear-gradient(135deg,#25D366,#16a34a);
+
+      color:white;
+
+      font-weight:700;
+
+      transition:0.4s;
+
+    }
+
+    .whatsapp-btn:hover{
+
+      transform:translateY(-4px);
+
+      box-shadow:
+
+      0 20px 40px rgba(37,211,102,0.28);
+
+    }
+
+    .disclaimer{
+
+      margin-top:28px;
+
+      font-size:12px;
+
+      opacity:0.65;
+
+      line-height:1.9;
+
+      text-align: justify;
+
+    }
+
+    @media(max-width:950px){
+
+      .main{
+
+        grid-template-columns:1fr;
+
+      }
+
+      .top h1{
+
+        font-size:38px;
+
+      }
+
+      .amount{
+
+        font-size:40px;
+
+      }
+
+      .left,
+
+      .right{
+
+        padding:30px;
+
+      }
+
+    }
+
+    @media(max-width:600px){
+
+      .row{
+
+        grid-template-columns:1fr;
+
+      }
+
+    }
+
+  </style>
+
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 </head>
 
 <body>
 
+  <div class="container">
 
+    <div class="top">
 
-<div class="container">
+      <div>
 
+        <img src="Screenshot_3-removebg-preview-removebg-preview.jpg" style="width: 900px; border-radius:20px;">
 
+      </div>
 
-<div class="top">
+      <h1>
 
-<img
-src="Screenshot_3-removebg-preview-removebg-preview.jpg">
+        Maintenance Calculator India
 
-<h1>
+        <span class="gradient">Calculator</span>
 
-Maintenance Calculator India
+      </h1>
 
-</h1>
+      <p>
 
+        Estimate maintenance amount under Indian Family Law based on income, marriage duration, children, lifestyle, and financial dependency factors.
 
-<p>
+      </p>
 
-Estimate maintenance under Indian law
+    </div>
 
-</p>
+    <div class="main">
 
-</div>
+      <div class="left">
 
+        <div class="section-title">
 
+          Client Information
 
+        </div>
 
-<div class="main">
+        <div class="row">
 
+          <div class="input-group">
 
+            <label>Full Name</label>
 
-<div class="card">
+            <input type="text" id="name" placeholder="Enter Full Name">
 
+          </div>
 
-<h2>
+          <div class="input-group">
 
-Client Information
+            <label>Phone Number</label>
 
-</h2>
+            <input type="tel" id="phone" placeholder="Enter Phone Number">
 
+          </div>
 
-<input
-type="text"
-id="name"
-placeholder="Full Name">
+        </div>
 
+        <div class="section-title" style="margin-top:10px;">
 
+          Financial Details
 
-<input
-type="tel"
-id="phone"
-placeholder="Phone Number">
+        </div>
 
+        <div class="input-group">
 
+          <label>Husband Monthly Income</label>
 
-<input
-type="number"
-id="husbandIncome"
-placeholder="Husband Income">
+          <input type="number" id="husbandIncome" placeholder="₹ Enter Monthly Income">
 
+        </div>
 
+        <div class="input-group">
 
-<input
-type="number"
-id="wifeIncome"
-placeholder="Wife Income">
+          <label>Wife Monthly Income</label>
 
+          <input type="number" id="wifeIncome" placeholder="₹ Enter Monthly Income">
 
+        </div>
 
-<select
-id="children">
+        <div class="row">
 
-<option value="0">
-0 Child
-</option>
+          <div class="input-group">
 
-<option value="1">
-1 Child
-</option>
+            <label>Number of Children</label>
 
-<option value="2">
-2 Children
-</option>
+            <select id="children">
 
-<option value="3">
-3+
-</option>
+              <option value="0">0</option>
 
-</select>
+              <option value="1">1</option>
 
+              <option value="2">2</option>
 
+              <option value="3">3+</option>
 
-<select
-id="duration">
+            </select>
 
-<option value="1">
+          </div>
 
-Less than 3 Years
+          <div class="input-group">
 
-</option>
+            <label>Marriage Duration</label>
 
-<option value="2">
+            <select id="duration">
 
-3-7 Years
+              <option value="1">Less than 3 Years</option>
 
-</option>
+              <option value="2">3 - 7 Years</option>
 
-<option value="3">
+              <option value="3">7 - 15 Years</option>
 
-7-15 Years
+              <option value="4">15+ Years</option>
 
-</option>
+            </select>
 
-<option value="4">
+          </div>
 
-15+ Years
+        </div>
 
-</option>
+        <div class="input-group">
 
-</select>
+          <label>Lifestyle Standard</label>
 
+          <select id="lifestyle">
 
+            <option value="1">Basic</option>
 
-<select
-id="lifestyle">
+            <option value="2">Middle Class</option>
 
-<option value="1">
+            <option value="3">Luxury Lifestyle</option>
 
-Basic
+          </select>
 
-</option>
+        </div>
 
-<option value="2">
+        <div class="input-group">
 
-Middle Class
+          <label>
 
-</option>
+            Additional Message (Optional)
 
-<option value="3">
+          </label>
 
-Luxury
+          <textarea
 
-</option>
+            id="message"
 
-</select>
+            placeholder="Enter additional details or message..."
 
+            rows="4"
 
+            style="resize:none;"
 
-<textarea
+          ></textarea>
 
-id="message"
+        </div>
 
-placeholder="Additional Message"
+        <div class="g-recaptcha" data-sitekey="6LcZ9ewsAAAAAGQsfUSYB6WHlVIRR-zR4ftPx2m-">
 
-></textarea>
+        </div>
 
+        <button onclick="calculateMaintenance()">
 
+          Calculate Maintenance
 
-<button
+        </button>
 
-onclick="calculateMaintenance()"
+      </div>
 
->
+      <div class="right">
 
-Calculate Maintenance
+        <div class="result-card">
 
-</button>
+          <div class="result-badge">
 
+            AI ESTIMATED RANGE
 
+          </div>
 
-</div>
+          <div class="amount" id="amount">
 
+            ₹0 - ₹0
 
+          </div>
 
+          <div class="summary" id="summary">
 
-<div class="result">
+            Fill the details to calculate estimated maintenance amount based on practical family law factors.
 
+          </div>
 
-<div
-class="amount"
-id="amount">
+          <div class="factor" id="factor1">
 
-₹0 - ₹0
+            • Income disparity may affect maintenance amount.
 
-</div>
+          </div>
 
+          <div class="factor" id="factor2">
 
+            • Child dependency may increase maintenance.
 
-<p
-id="summary">
+          </div>
 
-Fill details for estimate
+          <div class="factor" id="factor3">
 
-</p>
+            • Marriage duration and lifestyle impact estimation.
 
+          </div>
 
+          <div class="trust">
 
-<div
-class="factor"
-id="factor1">
+            ✔ Practical Family Law Logic Included <br>
 
-Income affects maintenance
+            ✔ AI-Based Indicative Estimation <br>
 
-</div>
+            ✔ Premium Legal Assessment Experience
 
+          </div>
 
+          <a class="whatsapp-btn" href="https://wa.me/919616166166" target="_blank">
 
-<div
-class="factor"
-id="factor2">
+            Talk to Advocate AK Tiwari
 
-Children increase maintenance
+          </a>
 
-</div>
+          <div class="disclaimer">
 
+            This calculator provides indicative estimates only and does not constitute legal advice. Actual maintenance depends upon judicial discretion, financial records, liabilities, evidence, and applicable laws.
 
+          </div>
 
-<div
-class="factor"
-id="factor3">
+        </div>
 
-Lifestyle impacts amount
+      </div>
 
-</div>
+    </div>
 
+    <div class="top">
 
+      <section class="seo-content">
 
-<a
+        <h2>
 
-class="whatsapp"
+          Maintenance Calculator Under Indian Law
 
-href="https://wa.me/919616166166"
+        </h2>
 
-target="_blank"
+        <p style="text-align: justify">
 
->
+          The Supreme Court in the landmark case of Rajnesh v. Neha introduced uniform guidelines for determining maintenance in matrimonial disputes. Courts consider factors such as income, assets, liabilities, lifestyle, dependents, child expenses, and the financial status of both parties. A Maintenance Calculator helps estimate maintenance based on these factors, but the final amount depends on judicial discretion and case-specific circumstances. The guidelines also require financial disclosure affidavits to ensure transparency and assist courts in granting fair and reasonable maintenance awards.
 
-Talk To Advocate AK Tiwari
+        </p>
 
-</a>
+        <h2>
 
+          How Maintenance Is Calculated In India
 
+        </h2>
 
-</div>
+        <p style="text-align: justify">
 
+          Maintenance in India is calculated by considering multiple factors, including the income, assets, liabilities, standard of living, financial needs, child expenses, and earning capacity of both parties. Courts also evaluate medical expenses, dependent family members, and lifestyle maintained during the marriage. Following the Supreme Court guidelines in Rajnesh v. Neha, financial disclosure by both parties plays an important role in determining fair maintenance. The final amount varies from case to case and depends on judicial discretion and specific circumstances.
 
+        </p>
 
-</div>
+      </section>
 
+    </div>
 
+  </div>
 
+  <script>
 
+    function calculateMaintenance(){
 
-<div class="seo">
+      let name = document.getElementById('name').value;
 
+      let phone = document.getElementById('phone').value;
 
-<h2>
+      let message = document.getElementById('message').value;
 
-Maintenance Calculator Under Indian Law
+      let husbandIncome = parseFloat(document.getElementById('husbandIncome').value) || 0;
 
-</h2>
+      let wifeIncome = parseFloat(document.getElementById('wifeIncome').value) || 0;
 
+      let children = parseInt(document.getElementById('children').value);
 
+      let durationValue = parseInt(document.getElementById('duration').value);
 
-<p>
+      let lifestyleValue = parseFloat(document.getElementById('lifestyle').value);
 
-The Supreme Court in Rajnesh v. Neha introduced uniform guidelines for determining maintenance in matrimonial disputes. Courts consider income, liabilities, dependents, lifestyle and child expenses while deciding maintenance.
+      let durationText = "";
 
-</p>
+      if(durationValue == 1){
 
+        durationText = "Less than 3 Years";
 
+      }
 
+      if(durationValue == 2){
 
-<h2>
+        durationText = "3 - 7 Years";
 
-How Maintenance Is Calculated In India
+      }
 
-</h2>
+      if(durationValue == 3){
 
+        durationText = "7 - 15 Years";
 
+      }
 
-<p>
+      if(durationValue == 4){
 
-Maintenance depends upon income, liabilities, marriage duration, standard of living, children and earning capacity of both spouses.
+        durationText = "15+ Years";
 
-</p>
+      }
 
+      let lifestyleText = "";
 
-</div>
+      if(lifestyleValue == 1){
 
+        lifestyleText = "Basic";
 
+      }
 
-</div>
+      if(lifestyleValue == 2){
 
+        lifestyleText = "Middle Class";
 
+      }
 
+      if(lifestyleValue == 3){
 
-<script>
+        lifestyleText = "Luxury Lifestyle";
 
+      }
 
-function calculateMaintenance(){
+      if(name == ''){
 
+        alert("Please enter full name.");
 
-let name=
+        return;
 
-document.getElementById(
-"name"
-).value;
+      }
 
+      if(phone == ''){
 
+        alert("Please enter phone number.");
 
-let husbandIncome=
+        return;
 
-parseFloat(
+      }
 
-document.getElementById(
-"husbandIncome"
-).value
+      if(husbandIncome <= 0){
 
-)||0;
+        alert("Please enter husband income.");
 
+        return;
 
+      }
 
-let wifeIncome=
+      let captcha = grecaptcha.getResponse();
 
-parseFloat(
+      if(captcha.length == 0){
 
-document.getElementById(
-"wifeIncome"
-).value
+        alert("Please verify captcha.");
 
-)||0;
+        return;
 
+      }
 
+      let maintenance = husbandIncome * 0.25;
 
-let children=
+      if(wifeIncome > 0){
 
-parseInt(
+        maintenance -= wifeIncome * 0.30;
 
-document.getElementById(
-"children"
-).value
+      }
 
-)||0;
+      maintenance += children * 7000;
 
+      if(durationValue == 2){
 
+        maintenance *= 1.1;
 
-let duration=
+      }
 
-parseInt(
+      if(durationValue == 3){
 
-document.getElementById(
-"duration"
-).value
+        maintenance *= 1.2;
 
-)||1;
+      }
 
+      if(durationValue == 4){
 
+        maintenance *= 1.35;
 
-let lifestyle=
+      }
 
-parseInt(
+      maintenance *= lifestyleValue;
 
-document.getElementById(
-"lifestyle"
-).value
+      if(maintenance < 0){
 
-)||1;
+        maintenance = 0;
 
+      }
 
+      let low = Math.round(maintenance * 0.85);
 
+      let high = Math.round(maintenance * 1.15);
 
-if(name==""){
+      document.getElementById('amount').innerHTML = `₹${low.toLocaleString()} - ₹${high.toLocaleString()}`;
 
-alert(
-"Enter name"
-);
+      document.getElementById('summary').innerHTML = `Hello ${name}, based on the entered financial and marital details, this is the estimated maintenance range under practical family law considerations.`;
 
-return;
+      document.getElementById('factor1').innerHTML = `• Husband income considered: ₹${husbandIncome.toLocaleString()}`;
 
-}
+      document.getElementById('factor2').innerHTML = `• ${children} child/children included in calculation.`;
 
+      document.getElementById('factor3').innerHTML = `• Lifestyle and marriage duration adjusted estimation.`;
 
+      fetch("https://script.google.com/macros/s/AKfycbxM_AqvIdxYHEQPTWhF0YWHqGww4pC9kEHXOeoMjdlbnvRuWzfgjiGcO-pjYvIMjHrM/exec", {
 
-if(husbandIncome<=0){
+        method: "POST",
 
-alert(
-"Enter husband income"
-);
+        body: JSON.stringify({
 
-return;
+          name: name,
 
-}
+          phone: phone,
 
+          husbandIncome: husbandIncome,
 
+          wifeIncome: wifeIncome,
 
+          children: children,
 
-let maintenance=
+          duration: durationText,
 
-husbandIncome*
-0.25;
+          lifestyle: lifestyleText,
 
+          message: message,
 
+          range: `₹${low.toLocaleString()} - ₹${high.toLocaleString()}`
 
-maintenance-=
+        })
 
-wifeIncome*
-0.30;
+      })
 
+      .then(response => response.json())
 
+      .then(data => {
 
-maintenance+=
+        console.log("Lead Sent Successfully");
 
-children*
-7000;
+        grecaptcha.reset();
 
+      })
 
+      .catch(error => {
 
-maintenance*=
+        console.log("Error:", error);
 
-lifestyle;
+      });
 
+    }
 
-
-if(duration==2)
-maintenance*=1.1;
-
-
-if(duration==3)
-maintenance*=1.2;
-
-
-if(duration==4)
-maintenance*=1.35;
-
-
-
-if(
-maintenance<0
-)
-
-maintenance=0;
-
-
-
-let low=
-
-Math.round(
-maintenance*
-0.85
-);
-
-
-
-let high=
-
-Math.round(
-maintenance*
-1.15
-);
-
-
-
-
-document.getElementById(
-"amount"
-).innerHTML=
-
-`₹${low.toLocaleString()}
--
-₹${high.toLocaleString()}`;
-
-
-
-document.getElementById(
-"summary"
-).innerHTML=
-
-`Hello ${name},
-estimated maintenance range based on entered details.`;
-
-
-
-document.getElementById(
-"factor1"
-).innerHTML=
-
-`Husband Income:
-₹${husbandIncome.toLocaleString()}`;
-
-
-
-document.getElementById(
-"factor2"
-).innerHTML=
-
-`${children}
-child included`;
-
-
-document.getElementById(
-"factor3"
-).innerHTML=
-
-"Marriage duration and lifestyle considered";
-
-
-}
-
-
-
-</script>
-
+  </script>
 
 </body>
+
 </html>

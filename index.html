@@ -841,6 +841,45 @@ function calculateMaintenance(){
   let lifestyleValue =
   parseFloat(document.getElementById('lifestyle').value);
 
+  /* =========================
+     VALIDATION
+  ========================= */
+
+  if(name == ''){
+
+    alert("Please enter full name.");
+    return;
+
+  }
+
+  if(phone == ''){
+
+    alert("Please enter phone number.");
+    return;
+
+  }
+
+  if(husbandIncome <= 0){
+
+    alert("Please enter husband income.");
+    return;
+
+  }
+
+  let captcha =
+  grecaptcha.getResponse();
+
+  if(captcha.length == 0){
+
+    alert("Please verify captcha.");
+    return;
+
+  }
+
+  /* =========================
+     TEXT VALUES
+  ========================= */
+
   let durationText = "";
 
   if(durationValue == 1){
@@ -873,36 +912,9 @@ function calculateMaintenance(){
     lifestyleText = "Luxury Lifestyle";
   }
 
-  if(name == ''){
-
-    alert("Please enter full name.");
-
-    return;
-  }
-
-  if(phone == ''){
-
-    alert("Please enter phone number.");
-
-    return;
-  }
-
-  if(husbandIncome <= 0){
-
-    alert("Please enter husband income.");
-
-    return;
-  }
-
-  let captcha =
-  grecaptcha.getResponse();
-
-  if(captcha.length == 0){
-
-    alert("Please verify captcha.");
-
-    return;
-  }
+  /* =========================
+     MAINTENANCE CALCULATION
+  ========================= */
 
   let maintenance =
   husbandIncome * 0.25;
@@ -910,6 +922,7 @@ function calculateMaintenance(){
   if(wifeIncome > 0){
 
     maintenance -= wifeIncome * 0.30;
+
   }
 
   maintenance += children * 7000;
@@ -917,16 +930,19 @@ function calculateMaintenance(){
   if(durationValue == 2){
 
     maintenance *= 1.1;
+
   }
 
   if(durationValue == 3){
 
     maintenance *= 1.2;
+
   }
 
   if(durationValue == 4){
 
     maintenance *= 1.35;
+
   }
 
   maintenance *= lifestyleValue;
@@ -934,6 +950,7 @@ function calculateMaintenance(){
   if(maintenance < 0){
 
     maintenance = 0;
+
   }
 
   let low =
@@ -941,6 +958,10 @@ function calculateMaintenance(){
 
   let high =
   Math.round(maintenance * 1.15);
+
+  /* =========================
+     SHOW RESULT
+  ========================= */
 
   document.getElementById('amount').innerHTML =
   `₹${low.toLocaleString()} - ₹${high.toLocaleString()}`;
@@ -965,9 +986,19 @@ function calculateMaintenance(){
 
   `• Lifestyle and marriage duration adjusted estimation.`;
 
-  fetch("https://script.google.com/macros/s/AKfycbxM_AqvIdxYHEQPTWhF0YWHqGww4pC9kEHXOeoMjdlbnvRuWzfgjiGcO-pjYvIMjHrM/exec", {
+  /* =========================
+     SEND DATA TO GOOGLE SCRIPT
+  ========================= */
+
+  fetch("YOUR_GOOGLE_SCRIPT_WEBAPP_URL", {
 
     method: "POST",
+
+    headers: {
+
+      "Content-Type": "application/json"
+
+    },
 
     body: JSON.stringify({
 
@@ -987,7 +1018,7 @@ function calculateMaintenance(){
 
       message: message,
 
-      range:
+      estimatedRange:
       `₹${low.toLocaleString()} - ₹${high.toLocaleString()}`
 
     })
@@ -1002,11 +1033,15 @@ function calculateMaintenance(){
 
     grecaptcha.reset();
 
+    alert("Calculation Completed Successfully");
+
   })
 
   .catch(error => {
 
     console.log("Error:", error);
+
+    alert("Something went wrong");
 
   });
 

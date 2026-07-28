@@ -914,11 +914,11 @@ This Divorce Maintenance Calculator is intended solely for educational and infor
 
 function calculateMaintenance(){
 
-let name = document.getElementById('name').value;
+let name = document.getElementById('name').value.trim();
 
-let phone = document.getElementById('phone').value;
+let phone = document.getElementById('phone').value.trim();
 
-let message = document.getElementById('message').value;
+let message = document.getElementById('message').value.trim();
 
 let husbandIncome = parseFloat(document.getElementById('husbandIncome').value) || 0;
 
@@ -930,87 +930,87 @@ let durationValue = parseInt(document.getElementById('duration').value);
 
 let lifestyleValue = parseFloat(document.getElementById('lifestyle').value);
 
+
+
 let durationText = "";
 
 if(durationValue == 1){
-
 durationText = "Less than 3 Years";
-
 }
 
 if(durationValue == 2){
-
 durationText = "3 - 7 Years";
-
 }
 
 if(durationValue == 3){
-
 durationText = "7 - 15 Years";
-
 }
 
 if(durationValue == 4){
-
 durationText = "15+ Years";
-
 }
+
+
 
 let lifestyleText = "";
 
 if(lifestyleValue == 1){
-
 lifestyleText = "Basic";
-
 }
 
 if(lifestyleValue == 2){
-
 lifestyleText = "Middle Class";
-
 }
 
 if(lifestyleValue == 3){
-
 lifestyleText = "Luxury Lifestyle";
-
 }
 
-if(name == ''){
+
+
+if(name === ''){
 
 alert("Please enter full name.");
-
 return;
 
 }
 
-if(phone == ''){
+
+if(phone === ''){
 
 alert("Please enter phone number.");
-
 return;
 
 }
+
 
 if(husbandIncome <= 0){
 
 alert("Please enter husband income.");
-
 return;
 
 }
+
+
+
+// CAPTCHA Check
 
 let captcha = grecaptcha.getResponse();
 
-if(captcha.length == 0){
+
+if(captcha.length === 0){
 
 alert("Please verify captcha.");
-
 return;
 
 }
 
+
+
+// Maintenance Calculation
+
 let maintenance = husbandIncome * 0.25;
+
 
 if(wifeIncome > 0){
 
@@ -1018,7 +1018,10 @@ maintenance -= wifeIncome * 0.30;
 
 }
 
+
 maintenance += children * 7000;
+
+
 
 if(durationValue == 2){
 
@@ -1026,11 +1029,13 @@ maintenance *= 1.1;
 
 }
 
+
 if(durationValue == 3){
 
 maintenance *= 1.2;
 
 }
+
 
 if(durationValue == 4){
 
@@ -1038,7 +1043,10 @@ maintenance *= 1.35;
 
 }
 
+
 maintenance *= lifestyleValue;
+
+
 
 if(maintenance < 0){
 
@@ -1046,61 +1054,103 @@ maintenance = 0;
 
 }
 
+
+
 let low = Math.round(maintenance * 0.85);
 
 let high = Math.round(maintenance * 1.15);
 
-document.getElementById('amount').innerHTML = `₹${low.toLocaleString()} - ₹${high.toLocaleString()}`;
 
-document.getElementById('summary').innerHTML = `Hello ${name}, based on the entered financial and marital details, this is the estimated maintenance range under practical family law considerations.`;
 
-document.getElementById('factor1').innerHTML = `• Husband income considered: ₹${husbandIncome.toLocaleString()}`;
+// Show Result
 
-document.getElementById('factor2').innerHTML = `• ${children} child/children included in calculation.`;
+document.getElementById('amount').innerHTML =
+`₹${low.toLocaleString()} - ₹${high.toLocaleString()}`;
 
-document.getElementById('factor3').innerHTML = `• Lifestyle and marriage duration adjusted estimation.`;
 
-fetch("https://script.google.com/macros/s/AKfycbwW9MP0uLbP2PpMAF41gts06Cp4xaXQ7SaDlIUO4OnXSdo3jcMy0kt9Kpzs9zYs9YD2ug/exec", {
+document.getElementById('summary').innerHTML =
+`Hello ${name}, based on the entered financial and marital details, this is the estimated maintenance range under practical family law considerations.`;
 
-method: "POST",
 
-body: JSON.stringify({
 
-name: name,
+document.getElementById('factor1').innerHTML =
+`• Husband income considered: ₹${husbandIncome.toLocaleString()}`;
 
-phone: phone,
 
-husbandIncome: husbandIncome,
+document.getElementById('factor2').innerHTML =
+`• ${children} child/children included in calculation.`;
 
-wifeIncome: wifeIncome,
 
-children: children,
+document.getElementById('factor3').innerHTML =
+`• Lifestyle and marriage duration adjusted estimation.`;
 
-duration: durationText,
 
-lifestyle: lifestyleText,
 
-message: message,
 
-range: `₹${low.toLocaleString()} - ₹${high.toLocaleString()}`
+// SEND DATA TO GOOGLE SCRIPT
+
+fetch("https://script.google.com/macros/s/AKfycbwW9MP0uLbP2PpMAF41gts06Cp4xaXQ7SaDlIUO4OnXSdo3jcMy0kt9Kpzs9zYs9YD2ug/exec",
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":"text/plain;charset=utf-8"
+},
+
+
+body:JSON.stringify({
+
+name:name,
+
+phone:phone,
+
+husbandIncome:husbandIncome,
+
+wifeIncome:wifeIncome,
+
+children:children,
+
+duration:durationText,
+
+lifestyle:lifestyleText,
+
+message:message,
+
+range:`₹${low.toLocaleString()} - ₹${high.toLocaleString()}`
 
 })
 
+
 })
 
-.then(response => response.json())
+
+.then(response => response.text())
+
 
 .then(data => {
 
-console.log("Lead Sent Successfully");
+
+console.log("Google Script Response:", data);
+
+
+alert("Calculation completed successfully!");
+
 
 grecaptcha.reset();
 
+
 })
+
 
 .catch(error => {
 
-console.log("Error:", error);
+
+console.log("Mail Sending Error:", error);
+
+
+alert("Calculation done but lead sending failed.");
+
 
 });
 

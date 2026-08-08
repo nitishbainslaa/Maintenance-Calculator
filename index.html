@@ -34,41 +34,36 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
+    padding: 20px 20px;
     min-height:100vh;
     background:
     radial-gradient(circle at top left,#2563eb,transparent 25%),
     radial-gradient(circle at bottom right,#7c3aed,transparent 25%),
     #020617;
-    overflow-x:hidden;
-    padding:40px 15px;
     color:white;
 }
 
 .seo-content{
-margin-top:40px;
-padding:35px;
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
-border-radius:25px;
+padding:30px 50px;
+background: rgb(234, 206, 151);
 backdrop-filter:blur(12px);
-max-width:1100px;
+max-width:100%;
 margin-left:auto;
 margin-right:auto;
-color:#e5e7eb;
+color:#000000;
 }
 
 .seo-content h2{
 font-size:28px;
 margin-bottom:15px;
 font-weight:700;
-color:#ffffff;
 line-height:1.4;
 }
 
 .seo-content p{
 font-size:15px;
 line-height:1.9;
-color:rgba(255,255,255,0.75);
+color:rgba(0, 0, 0, 0.75);
 margin-bottom:28px;
 }
 
@@ -76,10 +71,12 @@ margin-bottom:28px;
 
 .seo-content{
 padding:25px;
+
 }
 
 .seo-content h2{
 font-size:22px;
+color:#000000;
 }
 
 .seo-content p{
@@ -88,70 +85,96 @@ line-height:1.8;
 }
 
 }
-
-.logo{
-    width:100%;
-    max-width:900px;
-    height:auto;
-    display:block;
-    margin:0 auto 20px;
-    border-radius:20px;
-}
-  @media(max-width:768px){
-
-.logo{
-    max-width:300px;
-    border-radius:10px;
+/* LOGO ROW */
+.logo-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 30px;
 }
 
-}
-.container{
-width:100%;
-max-width:1200px;
-background:rgba(255,255,255,0.06);
-backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,0.08);
-border-radius:35px;
-overflow:hidden;
-position:relative;
-box-shadow:
-0 30px 80px rgba(0,0,0,0.45);
-transition:0.4s;
+/* HOME LOGO */
+.home-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 16px;
+    display: block;
+    margin: 0;
 }
 
-.container:hover{
-transform:translateY(-5px);
+/* MAIN LOGO */
+.logo {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 16px;
+    display: block;
+    margin: 0;
 }
 
-.container::before{
-content:'';
-position:absolute;
-width:450px;
-height:450px;
-background:#2563eb;
-filter:blur(180px);
-opacity:0.15;
-top:-180px;
-right:-120px;
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .logo-row {
+        align-items: center;
+        gap: 15px;
+    }
+
+    .home-logo {
+        width: 30px;
+        height: 30px;
+    }
+
+    .logo {
+        max-width: 200px;
+        border-radius: 5px;
+    }
 }
 
-.top{
-padding:60px 40px;
-text-align:center;
-border-bottom:
-1px solid rgba(255,255,255,0.08);
-background:
-linear-gradient(
-135deg,
-rgba(37,99,235,0.25),
-rgba(124,58,237,0.15)
-);
+
+/* CONTAINER */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    background: rgb(255, 255, 255);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 35px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+    transition: 0.4s;
 }
+
+
+.container::before {
+    content: '';
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    background: #fdfdfd;
+    filter: blur(180px);
+    opacity: 0.15;
+    top: -180px;
+    right: -120px;
+}
+
+
+/* TOP SECTION */
+.top {
+    padding:20px 30px 30px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    background: white;
+}
+
 
 .badge{
 display:inline-block;
-padding:10px 20px;
-border-radius:20px;
+border-radius:10px;
 background:white;
 border:1px solid rgba(255,255,255,0.08);
 font-size:13px;
@@ -160,10 +183,8 @@ margin-bottom:25px;
 }
 
 .top h1{
-font-size:55px;
-line-height:1.1;
-margin-bottom:20px;
-font-weight:800;
+text-align: center;
+color: black;
 }
 
 .gradient{
@@ -188,18 +209,14 @@ grid-template-columns:1fr 1fr;
 
 .left{
 padding:45px;
-background:rgba(255,255,255,0.97);
+background:rgba(198, 227, 246, 0.97);
 color:#111827;
 }
 
 .right{
+color: black;
 padding:45px;
-background:
-linear-gradient(
-180deg,
-rgba(2,6,23,0.75),
-rgba(15,23,42,0.95)
-);
+background: rgb(234, 206, 151);
 }
 
 .section-title{
@@ -266,7 +283,6 @@ box-shadow:
 }
 
 .result-card{
-background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.08);
 border-radius:30px;
 padding:35px;
@@ -285,12 +301,11 @@ margin-bottom:25px;
 }
 
 .amount{
-font-size:55px;
+font-size:30px;
 font-weight:800;
 line-height:1.1;
 margin-bottom:20px;
-background:
-linear-gradient(135deg,#ffffff,#60a5fa);
+background:black;
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 animation:pop 0.5s ease;
@@ -310,6 +325,18 @@ opacity:1;
 
 }
 
+.factor-list {
+    margin: 15px 0 30px 0;
+    padding-left: 45px;
+}
+
+.factor-list li {
+    margin-bottom: 5px;
+    padding-left: 5px;
+    line-height: 1.6;
+}
+
+
 .summary{
 line-height:1.9;
 opacity:0.88;
@@ -323,8 +350,8 @@ margin-bottom:10px;
 }
 
 .factor{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.06);
+background:rgb(237, 215, 159);
+border:1px solid rgb(249, 249, 249);
 padding:16px;
 border-radius:18px;
 margin-bottom:15px;
@@ -347,7 +374,7 @@ padding:18px;
 border-radius:18px;
 margin-top:30px;
 background:
-linear-gradient(135deg,#25D366,#16a34a);
+linear-gradient(135deg,#2563eb,#7c3aed);
 color:white;
 font-weight:700;
 transition:0.4s;
@@ -365,6 +392,7 @@ font-size:12px;
 opacity:0.65;
 line-height:1.9;
 text-align: justify;
+color: black;
 }
 
 textarea{
@@ -396,7 +424,7 @@ summary{
     cursor:pointer;
     font-size:16px;
     font-weight:600;
-    color:#ffffff;
+    color:black;
     outline:none;
 }
 
@@ -417,9 +445,7 @@ grid-template-columns:1fr;
 font-size:38px;
 }
 
-.amount{
-font-size:40px;
-}
+
 
 .left,
 .right{
@@ -434,6 +460,211 @@ padding:30px;
 grid-template-columns:1fr;
 }
 
+}
+
+/* =========================
+   MOBILE RESPONSIVE FIX
+========================= */
+
+@media (max-width: 768px) {
+
+    body {
+        width: 100%;
+        padding: 10px;
+        margin: 0;
+        overflow-x: hidden;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        border-radius: 20px;
+    }
+
+    .main {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .left,
+    .right {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px;
+        min-width: 0;
+    }
+
+    /* Form rows */
+    .row {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+        min-width: 0;
+    }
+
+    .input-group {
+        width: 100%;
+        min-width: 0;
+    }
+
+    /* Inputs */
+    input,
+    select,
+    textarea {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    /* Section title */
+    .section-title {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    /* Top section */
+    .top {
+        width: 100%;
+        padding: 20px 15px;
+    }
+
+    .top h1 {
+        font-size: 28px;
+        line-height: 1.3;
+        word-wrap: break-word;
+    }
+
+    .top p {
+        width: 100%;
+        max-width: 100%;
+        font-size: 14px;
+    }
+
+    /* Logo */
+    .logo-row {
+        width: 100%;
+        gap: 10px;
+    }
+
+    .home-logo {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+    }
+
+    .logo {
+        width: 100%;
+        max-width: 200px;
+        height: auto;
+        flex-shrink: 1;
+    }
+
+    /* Button */
+    button {
+        width: 100%;
+        max-width: 100%;
+        padding: 16px;
+        font-size: 15px;
+    }
+
+    /* Result */
+    .result-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 25px 20px;
+    }
+
+    .amount {
+        font-size: 26px;
+        word-break: break-word;
+    }
+
+    /* SEO */
+    .seo-content {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .seo-content p {
+        width: 100%;
+        max-width: 100%;
+        font-size: 14px;
+        line-height: 1.8;
+        text-align: left;
+    }
+
+    .seo-content h2 {
+        font-size: 21px;
+    }
+
+    /* List */
+    .factor-list {
+        width: 100%;
+        padding-left: 25px;
+        box-sizing: border-box;
+    }
+
+    /* WhatsApp */
+    .whatsapp-btn {
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+
+    /* Disclaimer */
+    .disclaimer {
+        width: 100%;
+        font-size: 12px;
+        word-wrap: break-word;
+    }
+}
+
+
+/* Very small phones */
+@media (max-width: 400px) {
+
+    body {
+        padding: 5px;
+    }
+
+    .container {
+        border-radius: 15px;
+    }
+
+    .left,
+    .right {
+        padding: 15px;
+    }
+
+    .top {
+        padding: 15px 10px;
+    }
+
+    .top h1 {
+        font-size: 24px;
+    }
+
+    .home-logo {
+        width: 35px;
+        height: 35px;
+    }
+
+    .logo {
+        max-width: 170px;
+    }
+
+    input,
+    select,
+    textarea {
+        padding: 14px;
+        font-size: 14px;
+    }
 }
 
 </style>
@@ -493,26 +724,30 @@ grid-template-columns:1fr;
 
 <div class="top">
 
-<div>
+    <div class="logo-row">
 
-<img
-  src="Screenshot_3-removebg-preview-removebg-preview.jpg"
-  class="logo"
-  alt="Divorce Maintenance Calculator India - Alimony Calculator">
+        <a href="https://www.aktiwari.in/">
+        <img 
+            src="home-logo-black-and-white.png"
+            class="home-logo"
+            alt="Advocate AK Tiwari Divorce Lawyer in Noida"></a>
 
-</div>
+        <img
+            src="Screenshot_3-removebg-preview-removebg-preview.jpg"
+            class="logo"
+            alt="Divorce Maintenance Calculator India - Alimony Calculator">
 
-<h1>
+    </div>
+<hr>
+<br/>
+    <h1>
+        Divorce Case Maintenance Calculator India 2026
+        
+    </h1>
 
-Divorce Maintenance Calculator India
 
-<span class="gradient">2026</span></h1>
 
-<p>
 
-Estimate maintenance amount under Indian Family Law based on income, marriage duration, children, lifestyle, and financial dependency factors.
-
-</p>
 
 </div>
 
@@ -660,7 +895,7 @@ AI ESTIMATED RANGE
 
 <div class="amount" id="amount">
 
-₹0 - ₹0
+Rs.0 - Rs.0
 
 </div>
 
@@ -700,14 +935,11 @@ Fill the details to calculate estimated maintenance amount based on practical fa
 
 <a class="whatsapp-btn" href="https://wa.me/919616166166" target="_blank">
 
-Talk to Advocate AK Tiwari
-
+WHATSAPP FOR MORE INFORMATION
 </a>
 
 <div class="disclaimer">
-
-This calculator provides indicative estimates only and does not constitute legal advice. Actual maintenance depends upon judicial discretion, financial records, liabilities, evidence, and applicable laws.
-
+This Maintenance Calculator for Divorce Case in India is designed to provide an indicative estimate of possible maintenance or alimony based on financial and family-related information such as the income of both spouses, number of children, marriage duration, lifestyle, and financial dependency. The calculator is intended for general informational and educational purposes only and should not be considered legal advice, a legal opinion, or a guaranteed prediction of any court order. In India, there is no universally fixed formula for determining maintenance, and courts may consider several factors including income, earning capacity, employment status, assets, liabilities, household expenses, medical and educational costs, standard of living, childcare responsibilities, duration of marriage, and other relevant circumstances. Actual maintenance may therefore differ from the estimated amount displayed by this calculator. Financial records, supporting documents, evidence, applicable laws, and judicial discretion can significantly influence the final decision.
 </div>
 
 </div>
@@ -716,7 +948,7 @@ This calculator provides indicative estimates only and does not constitute legal
 
 </div>
 
-<div class="top">
+<div class="top-summary">
 
 <section class="seo-content">
 
@@ -731,7 +963,7 @@ Maintenance Calculator Under Indian Law
 The Supreme Court in the landmark case of Rajnesh v. Neha introduced uniform guidelines for determining maintenance in matrimonial disputes. Courts consider factors such as income, assets, liabilities, lifestyle, dependents, child expenses, and the financial status of both parties. A Maintenance Calculator helps estimate maintenance based on these factors, but the final amount depends on judicial discretion and case-specific circumstances. The guidelines also require financial disclosure affidavits to ensure transparency and assist courts in granting fair and reasonable maintenance awards.
 
 </p>
-<br /><br />
+
 <h2>How is Divorce Maintenance Calculated in India?</h2>
 
 <p style="text-align: justify">There is no fixed formula prescribed under Indian law for calculating maintenance or alimony. Courts exercise discretion and assess multiple factors before determining a fair amount. One of the most important considerations is the earning capacity and actual income of both spouses. The court also examines whether the spouse seeking maintenance is employed, capable of earning, or financially dependent.
@@ -742,7 +974,7 @@ The duration of marriage may also influence the amount of maintenance awarded. L
 
 Since every case is unique, maintenance awards can vary significantly. A Divorce Maintenance Calculator estimates maintenance by analyzing financial information provided by the user and applying commonly observed legal principles used in Indian courts.</p>
 
-<br /><br />
+
 <h2>Formula Used in Divorce Maintenance Calculation</h2>
 
 <p style="text-align: justify">Indian courts do not follow a universally applicable mathematical formula for maintenance. However, many legal professionals and financial experts use indicative calculations to estimate possible maintenance amounts.
@@ -750,23 +982,25 @@ Since every case is unique, maintenance awards can vary significantly. A Divorce
 A common approach involves evaluating the net monthly income of the earning spouse after deducting taxes, mandatory expenses, and essential financial obligations. A percentage of the remaining disposable income may then be considered for maintenance, depending on the circumstances of the case.
 
 For estimation purposes, some legal practitioners consider maintenance within a broad range of approximately 20% to 35% of the earning spouse's net monthly income. However, this is not a statutory rule and should not be treated as a guaranteed outcome. Courts may award higher or lower amounts depending on the facts of the case.
-<br/><br />
-<b>Factors that may affect the calculation include:</b>
 <br /><br />
-Monthly income of both spouses
-<br>Employment status of the applicant spouse
-<br>Number of dependent children
-<br>Housing and rental expenses
-<br>Medical expenses
-<br>Educational expenses
-<br>Existing liabilities and debts
-<br>Standard of living during marriage
-<br>Duration of marriage
-<br>Future earning capacity
-</p><br /><br />
+<b>Factors that may affect the calculation include:</b>
+
+<p>Monthly income of both spouses</p>
+  <ul class="factor-list">
+    <li>Employment status of the applicant spouse</li>
+    <li>Number of dependent children</li>
+    <li>Housing and rental expenses</li>
+    <li>Medical expenses</li>
+    <li>Educational expenses</li>
+    <li>Existing liabilities and debts</li>
+    <li>Standard of living during marriage</li>
+    <li>Duration of marriage</li>
+  <li>Future earning capacity</li>
+</ul>
+</p>
 
 <p style="text-align: justify"><b>Users should understand that maintenance calculations are estimates only and cannot predict actual court orders.</b></p>
-  <br /><br />
+
     <h2>Factors Courts Consider While Awarding Maintenance in India</h2>
 
 <p style="text-align:justify;">
@@ -781,7 +1015,7 @@ Some of the most important factors considered by courts include the monthly inco
 The court aims to ensure that the dependent spouse can maintain a reasonable standard of living after separation or divorce. However, maintenance awards are always based on the specific facts and circumstances of each case, and no two cases are exactly alike.
 </p>
 
-<br><br>
+
 
 <h2>Maintenance Laws in India</h2>
 
@@ -797,7 +1031,6 @@ Section 125 CrPC provides a speedy remedy to wives, children, and parents who ar
 The Supreme Court of India, through various judgments including Rajnesh v. Neha, has emphasized transparency in financial disclosures and consistency in maintenance proceedings to ensure fair outcomes.
 </p>
 
-<br><br>
 
 <h2>Can a Working Wife Claim Maintenance?</h2>
 
@@ -809,7 +1042,7 @@ Yes. Merely because a wife is employed does not automatically disqualify her fro
 The court may also consider the nature of employment, stability of income, childcare responsibilities, health conditions, educational qualifications, and future earning prospects. Each case is assessed on its own merits, and there is no universal rule applicable to all situations.
 </p>
 
-<br><br>
+
 
 <h2>Can a Husband Claim Maintenance?</h2>
 
@@ -822,83 +1055,85 @@ The determination ultimately depends upon the facts of the case and the applicab
 </p>
 
 </section>
-<section class="seo-content">
 
+<hr>
+
+<section class="seo-content">
 
 <h2>Frequently Asked Questions (FAQs)</h2>
 
 <details>
-<summary><strong>How much maintenance can a wife claim in India?</strong></summary>
+<summary>How much maintenance can a wife claim in India?</summary>
 <p>
 There is no fixed amount prescribed under Indian law. Courts determine maintenance after considering income, expenses, lifestyle, dependents, assets, liabilities, and other relevant circumstances.
 </p>
 </details>
 
 <details>
-<summary><strong>Is there a fixed formula for calculating maintenance?</strong></summary>
+<summary>Is there a fixed formula for calculating maintenance?</summary>
 <p>
 No. Indian courts do not follow a statutory formula. Maintenance is determined based on the facts and circumstances of each individual case.
 </p>
 </details>
 
 <details>
-<summary><strong>Can a working wife receive maintenance?</strong></summary>
+<summary>Can a working wife receive maintenance?</summary>
 <p>
 Yes. A working wife may still be eligible for maintenance if her income is insufficient to maintain a reasonable standard of living or if there is a substantial difference in financial status between the spouses.
 </p>
 </details>
 
 <details>
-<summary><strong>Can maintenance be increased or reduced later?</strong></summary>
+<summary>Can maintenance be increased or reduced later?</summary>
 <p>
 Yes. Courts may modify maintenance orders if there is a significant change in financial circumstances, employment status, health conditions, or other relevant factors.
 </p>
 </details>
 
 <details>
-<summary><strong>What happens if the husband loses his job?</strong></summary>
+<summary>What happens if the husband loses his job?</summary>
 <p>
 The court may consider the change in financial circumstances and may modify the maintenance amount if sufficient evidence is presented.
 </p>
 </details>
 
 <details>
-<summary><strong>Does child support form part of maintenance?</strong></summary>
+<summary>Does child support form part of maintenance?</summary>
 <p>
 Child support may be awarded separately or together with spousal maintenance depending upon the facts and circumstances of the case.
 </p>
 </details>
 
 <details>
-<summary><strong>Can maintenance be denied by the court?</strong></summary>
+<summary>Can maintenance be denied by the court?</summary>
 <p>
 Yes. Courts may deny maintenance in certain circumstances depending on the evidence, conduct of the parties, financial independence of the applicant, and applicable legal provisions.
 </p>
 </details>
 
 <details>
-<summary><strong>Is maintenance taxable in India?</strong></summary>
+<summary>Is maintenance taxable in India?</summary>
 <p>
 The tax implications of maintenance and alimony may vary depending on whether the payment is made as a lump sum or periodic payment. Professional tax advice should be obtained in specific cases.
 </p>
 </details>
 
 <details>
-<summary><strong>Can a husband claim maintenance from his wife?</strong></summary>
+<summary>Can a husband claim maintenance from his wife?</summary>
 <p>
 In certain situations, a financially dependent husband may be entitled to seek maintenance under applicable legal provisions and judicial precedents.
 </p>
 </details>
 
 <details>
-<summary><strong>Is this Divorce Maintenance Calculator legally binding?</strong></summary>
+<summary>Is this Divorce Maintenance Calculator legally binding?</summary>
 <p>
 No. This calculator provides only an indicative estimate for informational and educational purposes. The final maintenance amount can only be determined by a competent court after considering all relevant facts, evidence, and applicable laws.
 </p>
 </details>
-
-<br><br>
-
+<br>
+<hr>
+<br/>
 <h2>Legal Disclaimer</h2>
 
 <p style="text-align:justify;">
